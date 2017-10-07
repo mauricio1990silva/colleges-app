@@ -1,6 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {FormsModule} from '@angular/forms';
+import {HttpModule} from '@angular/http';
 import {
   NgModule,
   ApplicationRef
@@ -15,29 +15,59 @@ import {
   PreloadAllModules
 } from '@angular/router';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 /*
  * Platform and Environment providers/directives/pipes
  */
-import { ENV_PROVIDERS } from './environment';
-import { ROUTES } from './app.routes';
+import {ENV_PROVIDERS} from './environment';
+import {ROUTES} from './app.routes';
 // App is our top level component
-import { AppComponent } from './app.component';
-import { APP_RESOLVER_PROVIDERS } from './app.resolver';
-import { AppState, InternalStateType } from './app.service';
-import { HomeComponent } from './home';
-import { AboutComponent } from './about';
-import { NoContentComponent } from './no-content';
-import { XLargeDirective } from './home/x-large';
+import {AppComponent} from './app.component';
+import {APP_RESOLVER_PROVIDERS} from './app.resolver';
+import {AppState, InternalStateType} from './app.service';
+import {HomePageComponent} from './containers/home';
+import {NoContentComponent} from './components/no-content';
 
 import '../styles/styles.scss';
 import '../styles/headings.css';
+import {CustomMaterialModule} from './material/custom-material.module';
+import {StoreModule} from '@ngrx/store';
+import {StoreRouterConnectingModule} from '@ngrx/router-store';
+import {reducers} from './reducers/index';
+import {StoreDevToolsModule} from './dev-tools/store-devtools.module';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+import {useLogMonitor} from '@ngrx/store-log-monitor';
+import {FilterPanelComponent} from './components/filter-panel/filter-panel.component';
+import {MdMultiselect} from 'md-multiselect';
+import {
+  ProgramFilterComponent
+} from
+  './components/filter-panel/program-filter/program-filter.component';
+import {SchoolService} from './services/school.service';
+import {EffectsModule} from '@ngrx/effects';
+import {SchoolEffects} from './effects/school';
+import {
+  LocationFilterComponent
+}
+  from './components/filter-panel/location-filter/location-filter.component';
+import {
+  FindSchoolNameFilterComponent
+}
+  from './containers/find-school-name/find-school-name-filter.component';
+import {
+  SchoolNameFilterComponent
+}
+  from './components/filter-panel/school-name-filter/school-name-filter.component';
+import {AdvancedFilterComponent} from "./components/filter-panel/advanced-filter/advanced-filter.component";
+import {SearchFilterComponent} from "./components/filter/search-filter.component";
+import {SearchPageComponent} from "./containers/search/search-page.component";
 
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
-  AppState
+  AppState,
+  SchoolService
 ];
 
 type StoreType = {
@@ -46,17 +76,35 @@ type StoreType = {
   disposeOldHosts: () => void
 };
 
+const STORE_DEV_TOOLS_IMPORTS = [];
+if (ENV === 'development') {
+  STORE_DEV_TOOLS_IMPORTS.push(...[
+    StoreDevtoolsModule.instrument({
+      monitor: useLogMonitor({
+        visible: true,
+        position: 'right'
+      })
+    })
+  ]);
+}
+
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
 @NgModule({
-  bootstrap: [ AppComponent ],
+  bootstrap: [AppComponent],
   declarations: [
     AppComponent,
-    AboutComponent,
-    HomeComponent,
-    NoContentComponent,
-    XLargeDirective
+    HomePageComponent,
+    SearchPageComponent,
+    FilterPanelComponent,
+    ProgramFilterComponent,
+    LocationFilterComponent,
+    FindSchoolNameFilterComponent,
+    SchoolNameFilterComponent,
+    AdvancedFilterComponent,
+    SearchFilterComponent,
+    NoContentComponent
   ],
   /**
    * Import Angular's modules.
@@ -66,6 +114,12 @@ type StoreType = {
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    CustomMaterialModule,
+    StoreRouterConnectingModule,
+    StoreDevToolsModule,
+    STORE_DEV_TOOLS_IMPORTS,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([SchoolEffects]),
     RouterModule.forRoot(ROUTES, {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules
@@ -81,10 +135,9 @@ type StoreType = {
 })
 export class AppModule {
 
-  constructor(
-    public appRef: ApplicationRef,
-    public appState: AppState
-  ) {}
+  constructor(public appRef: ApplicationRef,
+              public appState: AppState) {
+  }
 
   public hmrOnInit(store: StoreType) {
     if (!store || !store.state) {
@@ -122,7 +175,7 @@ export class AppModule {
     /**
      * Save input values
      */
-    store.restoreInputValues  = createInputTransfer();
+    store.restoreInputValues = createInputTransfer();
     /**
      * Remove styles
      */

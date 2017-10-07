@@ -1,0 +1,11 @@
+.example-full-width {
+  width: 100%;
+}
+
+
+md-progress-bar {
+  opacity: 0.0;
+}
+md-progress-bar.show {
+  opacity: 1.0;
+}

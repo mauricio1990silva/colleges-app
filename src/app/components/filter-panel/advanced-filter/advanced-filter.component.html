@@ -1,0 +1,49 @@
+<div>
+  <div class="center">
+    <md-selection-list #schoolSizeList style="margin: 15px;">
+      <div style="border-bottom: 1px darkred solid; width: 100%">Undergraduate Student Body</div>
+      <md-list-option style="text-align: left" *ngFor="let schoolSize of typesOfSchoolSize">
+        {{schoolSize.viewValue}}
+      </md-list-option>
+    </md-selection-list>
+
+    <md-selection-list #schoolTypeList style="margin: 15px">
+      <div style="border-bottom: 1px darkred solid; width: 100%">Type of School</div>
+      <md-list-option style="text-align: left"  *ngFor="let schoolType of typesOfSchool">
+        {{schoolType.viewValue}}
+      </md-list-option>
+    </md-selection-list>
+
+    <div>
+      <div>Average Annual Cost</div>
+      <div style="margin-left: 50px;">
+        $0
+        <md-slider md-line style="margin-top: 10px;" max="90" min="0" value="0" [thumb-label]="true"></md-slider>
+        $90K
+      </div>
+      <div>Graduation Rate ( % )</div>
+      <div style="margin-left: 55px;">
+        0%
+        <md-slider md-line style="margin-top: 10px;" max="100" min="0" value="0" [thumb-label]="true"></md-slider>
+        100%
+      </div>
+      <div>Salary After Attending</div>
+      <div style="margin-left: 65px;">
+        $0
+        <md-slider md-line style="margin-top: 10px;" max="125.9" min="0" value="0" [thumb-label]="true"></md-slider>
+        $125.9K
+      </div>
+    </div>
+
+    <md-select class="example-full-width" style="margin: 10px;" placeholder="Specialized mission">
+      <md-option *ngFor="let mission of typesOfMissions" [value]="mission.value">
+        {{ mission.viewValue }}
+      </md-option>
+    </md-select>
+
+    <md-select class="example-full-width" style="margin: 10px;" placeholder="Religious affiliation">
+      <md-option *ngFor="let religion of typesOfReligions" [value]="religion.value">
+        {{ religion.viewValue }}
+      </md-option>
+    </md-select>
+  </div>

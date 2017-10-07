@@ -1,0 +1,33 @@
+/*styles for home content only*/
+.XD-CLASS-HOME{
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: block;
+}
+.XD-CLASS-HOME::after {
+  content: "";
+  background: black url('../../../assets/img/college-grads-5.jpg') center center;
+  background-size: cover;
+  opacity: 0.9;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  z-index: -1;
+}
+.filter {
+  width: 50%;
+  margin: 0 auto;
+  font-weight: 600;
+  text-align: center; align-items: center; justify-content: center
+}
+
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}

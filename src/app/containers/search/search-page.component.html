@@ -1,0 +1,14 @@
+<div clas="XD-CLASS-SEARCH">
+  <md-toolbar class="xD-CLASS-HEADER">Search</md-toolbar>
+  <div class="XD-CLASS-filter-projects">
+    <college-search-filter [queryParamMap]="queryParams$ | async"
+                           (updateSelectedDegree)="updateSelectedDegree($event)"
+                           (updateSelectedProgram)="updateSelectedProgram($event)"></college-search-filter>
+  </div>
+  <div class="XD-CLASS-SCHOOL">
+    <div>
+      <h1>Hello</h1>
+    </div>
+  </div>
+</div>
+

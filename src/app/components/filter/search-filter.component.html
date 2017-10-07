@@ -1,0 +1,53 @@
+<div class="XD-CLASS-filter-container">
+  <md-toolbar color="primary">
+    <div style="margin-top: 5px; padding-left: 10px;">
+      <md-icon>filter_list</md-icon>
+      <span>Filters</span>
+    </div>
+  </md-toolbar>
+  <div style="width: 100%">
+    <div>
+      <md-expansion-panel [expanded]="true">
+        <md-expansion-panel-header>
+          <md-panel-title>
+            <b>Programs/Degrees</b>
+          </md-panel-title>
+        </md-expansion-panel-header>
+        <college-program-filter [selectedDegree]="selectedDegree"
+                                [selectedProgram]="selectedProgram"
+                                (updateSelectedDegree)="updateSelectedDegree.emit($event)"
+                                (updateSelectedProgram)="updateSelectedProgram.emit($event)"></college-program-filter>
+      </md-expansion-panel>
+    </div>
+    <div>
+      <md-expansion-panel [expanded]="true">
+        <md-expansion-panel-header>
+          <md-panel-title>
+            <b>Location</b>
+          </md-panel-title>
+        </md-expansion-panel-header>
+        <!--<college-location-filter></college-location-filter>-->
+      </md-expansion-panel>
+    </div>
+    <div>
+      <md-expansion-panel [expanded]="true">
+        <md-expansion-panel-header>
+          <md-panel-title>
+            <b>School Name</b>
+          </md-panel-title>
+        </md-expansion-panel-header>
+        <college-school-name-filter></college-school-name-filter>
+      </md-expansion-panel>
+    </div>
+    <div>
+      <md-expansion-panel [expanded]="true">
+        <md-expansion-panel-header>
+          <md-panel-title>
+            <b>Advanced Search</b>
+          </md-panel-title>
+        </md-expansion-panel-header>
+        <college-advanced-filter></college-advanced-filter>
+      </md-expansion-panel>
+    </div>
+  </div>
+</div>

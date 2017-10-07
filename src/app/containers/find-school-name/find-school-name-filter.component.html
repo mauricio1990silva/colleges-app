@@ -1,0 +1,4 @@
+<college-school-name-filter [query]="searchQuery$ | async"
+                            [schoolNames]="schoolNames$ | async"
+                            [loading]="loading$ | async"
+                            (search)="search($event)"></college-school-name-filter>

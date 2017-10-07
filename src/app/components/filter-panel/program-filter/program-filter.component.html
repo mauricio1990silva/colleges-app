@@ -1,0 +1,15 @@
+<div style="display: flex; flex-wrap: wrap; justify-content: flex-start; min-width: 100%">
+  <md-select (change)="updateSelectedDegree.emit(selectedDegree)" class="example-full-width"
+             [(ngModel)]="selectedDegree" style="margin: 10px;" placeholder="Choose a degree">
+    <md-option *ngFor="let degree of degrees" [value]="degree.value">
+      {{ degree.viewValue }}
+    </md-option>
+  </md-select>
+  <md-select (change)="updateSelectedProgram.emit(selectedProgram)" class="example-full-width"
+             [(ngModel)]="selectedProgram" style="margin: 10px;"  placeholder="Choose a program">
+    <md-option *ngFor="let program of programs" [value]="program.value">
+      {{ program.viewValue }}
+    </md-option>
+  </md-select>
+</div>
+

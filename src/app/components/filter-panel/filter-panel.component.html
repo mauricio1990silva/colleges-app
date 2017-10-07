@@ -1,0 +1,89 @@
+<md-toolbar color="primary">
+  Find Schools
+  <span class="example-spacer"></span>
+  Compare Schools
+</md-toolbar>
+<md-accordion class="example-headers-align">
+  <md-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
+    <md-expansion-panel-header>
+      <md-panel-title>
+        <b>Programs/Degrees</b>
+      </md-panel-title>
+      <md-panel-description>
+        What are you looking for?
+        <md-icon>account_circle</md-icon>
+      </md-panel-description>
+    </md-expansion-panel-header>
+
+    <college-program-filter></college-program-filter>
+
+    <md-action-row>
+      <button md-button color="primary" (click)="nextStep()">Next</button>
+    </md-action-row>
+  </md-expansion-panel>
+
+  <md-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
+    <md-expansion-panel-header>
+      <md-panel-title>
+        <b>Location</b>
+      </md-panel-title>
+      <md-panel-description>
+        What state would you like to go?
+        <md-icon>add_location</md-icon>
+      </md-panel-description>
+    </md-expansion-panel-header>
+
+    <!--<college-location-filter></college-location-filter>-->
+
+    <md-action-row>
+      <button md-button color="warn" (click)="prevStep()">Previous</button>
+      <button md-button color="primary" (click)="nextStep()">Next</button>
+    </md-action-row>
+  </md-expansion-panel>
+
+  <md-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle="true">
+    <md-expansion-panel-header>
+      <md-panel-title>
+        <b>School Name</b>
+      </md-panel-title>
+      <md-panel-description>
+        Type the school of your preference
+        <md-icon>account_balance</md-icon>
+      </md-panel-description>
+    </md-expansion-panel-header>
+
+    <college-find-school-name-filter></college-find-school-name-filter>
+
+    <md-action-row>
+      <button md-button color="warn" (click)="prevStep()">Previous</button>
+      <button md-button color="primary" (click)="nextStep()">Next</button>
+    </md-action-row>
+  </md-expansion-panel>
+
+  <md-expansion-panel [expanded]="step === 3" (opened)="setStep(3)" hideToggle="true">
+    <md-expansion-panel-header>
+      <md-panel-title>
+        <b>Advanced Search</b>
+      </md-panel-title>
+      <md-panel-description>
+        Specify filters
+        <md-icon>search</md-icon>
+      </md-panel-description>
+    </md-expansion-panel-header>
+
+    <college-advanced-filter></college-advanced-filter>
+
+    <md-action-row>
+      <button md-button color="warn" (click)="prevStep()">Previous</button>
+      <button md-button color="primary" (click)="nextStep()">End</button>
+    </md-action-row>
+  </md-expansion-panel>
+
+</md-accordion>
+
+<div style="text-align: center; align-items: center; justify-content: center; margin: 20px;">
+  <button color="primary" style="font-size: x-large; padding: 15px;" md-raised-button>
+    SEARCH
+    <md-icon>search</md-icon>
+  </button>
+</div>
