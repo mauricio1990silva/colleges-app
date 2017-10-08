@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
-import { SchoolName } from '../model/school.model';
+import { SchoolCard } from '../model/school.model';
 import * as school from '../actions/school';
 
 export interface State {
-  schoolNames: SchoolName [];
+  schoolNames: SchoolCard [];
   loading: boolean;
   query: string;
 };
@@ -29,7 +29,8 @@ export function reducer(state = initialState, action: school.Actions): State {
 
       return Object.assign({}, state, {
         query,
-        loading: true
+        loading: true,
+        schoolNames: []
       });
     }
 
@@ -58,8 +59,6 @@ export function reducer(state = initialState, action: school.Actions): State {
     }
   }
 }
-
-
 export const getSchoolNames = (state: State) => state.schoolNames;
 export const getQuery = (state: State) => state.query;
 export const getLoading = (state: State) => state.loading;

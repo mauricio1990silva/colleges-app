@@ -1,0 +1,38 @@
+<md-card *ngIf="schoolCard" class="example-card">
+  <md-card-header>
+    <div md-card-avatar class="example-header-image"></div>
+    <md-card-title style="font-size: large"><b>{{schoolCard['school.name']}}</b></md-card-title>
+    <md-card-subtitle>{{schoolCard['school.city']}}, {{schoolCard['school.state']}}</md-card-subtitle>
+  </md-card-header>
+  <div style="width: 100%; margin-top: -35px; text-align: right;">
+    <span style="color: #3f97b5"># Undergraduates:</span> {{schoolCard['2015.student.size']}}
+  </div>
+  <div style="width: 100%; background: lightblue; height: 3px;"></div>
+  <md-card-content>
+    <div style="align-content: center; align-items: center;
+    justify-content: center; width: 100%; margin-top: 30px; font-size: medium">
+      <div style="justify-content: center; display: flex; flex-wrap: wrap;">
+        <div>
+          <div *ngIf="schoolCard['2015.cost.avg_net_price.overall']; else notFound" style="text-align: left">{{schoolCard['2015.cost.avg_net_price.overall'] | currency:'USD':true:'4.0'}}</div>
+          <div style="color: lightcoral"><b>Average Cost</b></div>
+        </div>
+        <div style="height: 35px; background: lightgray; width: 1px; margin: 4px;"></div>
+        <div>
+          <div style="text-align: left">{{schoolCard['2015.completion.rate_suppressed.overall'] * 100 | number:'2.2-2'}}%</div>
+          <div style="color: lightseagreen"><b>Graduation Rate</b></div>
+        </div>
+        <div style="height: 35px; background: lightgray; width: 1px; margin: 6px;"></div>
+        <div>
+          <div style="text-align: left">{{schoolCard['2013.earnings.10_yrs_after_entry.median'] | currency:'USD':true:'4.0'}}</div>
+          <div style="color: #ffa751"><b>Salary After</b></div>
+        </div>
+        <ng-template #notFound>---</ng-template>
+      </div>
+
+    </div>
+  </md-card-content>
+  <md-card-actions align="end">
+    <button md-button style="font-size: medium; color: #3f97b5">View Details</button>
+  </md-card-actions>
+</md-card>
+

@@ -1,10 +1,10 @@
 <md-form-field class="example-full-width">
   <input type="text" placeholder="Name" aria-label="Number"
          mdInput [mdAutocomplete]="auto"
-         [value]="query" (keyup)="search.emit($event.target.value)">
+         [value]="query" (keyup)="handleKeyUp($event.target.value)">
   <md-autocomplete #auto="mdAutocomplete">
     <md-progress-bar mode="indeterminate" color="warn" [class.show]="loading"></md-progress-bar>
-    <md-option *ngFor="let name of schoolNames" [value]="name['school.name']">
+    <md-option (click)="schoolSelected.emit(name['school.name'])" *ngFor="let name of schoolNames" [value]="name['school.name']">
       {{ name['school.name']}}
     </md-option>
   </md-autocomplete>

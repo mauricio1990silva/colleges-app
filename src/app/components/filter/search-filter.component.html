@@ -1,9 +1,8 @@
 <div class="XD-CLASS-filter-container">
-  <md-toolbar color="primary">
-    <div style="margin-top: 5px; padding-left: 10px;">
-      <md-icon>filter_list</md-icon>
-      <span>Filters</span>
-    </div>
+  <md-toolbar style="background: #3f97b5; color: white">
+    <span style="font-size: medium">Filters</span>
+    <span class="example-spacer"></span>
+    <md-icon>filter_list</md-icon>
   </md-toolbar>
   <div style="width: 100%">
     <div>
@@ -36,7 +35,8 @@
             <b>School Name</b>
           </md-panel-title>
         </md-expansion-panel-header>
-        <college-school-name-filter></college-school-name-filter>
+        <college-find-school-name-filter [selectedSchoolName]="selectedSchoolName"
+                                         (schoolSelected)="updateSchoolSelected.emit($event)"></college-find-school-name-filter>
       </md-expansion-panel>
     </div>
     <div>

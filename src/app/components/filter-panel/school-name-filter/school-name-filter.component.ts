@@ -11,7 +11,16 @@ import { SchoolName } from '../../../model/school.model';
 })
 export class SchoolNameFilterComponent {
   @Input() schoolNames: SchoolName [] = [];
-  @Input() query: any;
+  @Input() query: string = '';
   @Input() loading: boolean;
   @Output() search: EventEmitter<string> = new EventEmitter();
+  @Output() schoolSelected: EventEmitter<string> = new EventEmitter();
+
+  handleKeyUp(value: string){
+    this.search.emit(value);
+    if(value.length == 0){
+      this.schoolSelected.emit('');
+    }
+  }
+
 }

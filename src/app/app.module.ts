@@ -62,6 +62,8 @@ import {
 import {AdvancedFilterComponent} from "./components/filter-panel/advanced-filter/advanced-filter.component";
 import {SearchFilterComponent} from "./components/filter/search-filter.component";
 import {SearchPageComponent} from "./containers/search/search-page.component";
+import {SchoolCardListComponent} from "./components/school-card-list/school-card-list.component";
+import {SchoolCardComponent} from "./components/school-card/school-card.component";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -104,6 +106,8 @@ if (ENV === 'development') {
     SchoolNameFilterComponent,
     AdvancedFilterComponent,
     SearchFilterComponent,
+    SchoolCardListComponent,
+    SchoolCardComponent,
     NoContentComponent
   ],
   /**

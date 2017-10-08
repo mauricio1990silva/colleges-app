@@ -20,6 +20,8 @@ export class FindSchoolNameFilterComponent {
   searchQuery$: Observable<string>;
   schoolNames$: Observable<SchoolName[]>;
   loading$: Observable<boolean>;
+  @Input() selectedSchoolName: string;
+  @Output() schoolSelected: EventEmitter<string> = new EventEmitter();
 
   constructor(private store: Store<fromRoot.State>) {
     this.searchQuery$ = store.select(fromRoot.getSchoolSearchQuery).take(1);
@@ -28,13 +30,12 @@ export class FindSchoolNameFilterComponent {
   }
 
   public search(query: string) {
-    console.log("search for " + query);
     let q = {
-      'api_key': 'WAocNveiBuTTczOj9W7oqLXoVABZyu7Zbaz2cSwn',
       'fields' : 'school.name',
       'per_page': 20,
       'school.name' : query
     };
+    console.log("query " + query);
     this.store.dispatch(new school.SearchSchoolAction(q));
   }
 }

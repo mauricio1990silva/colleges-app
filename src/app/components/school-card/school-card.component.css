@@ -1,0 +1,12 @@
+:host{
+  margin: 10px;
+}
+.example-card{
+  min-width: 400px;
+  max-width: 420px;
+  /*border-top: 10px solid dodgerblue;*/
+}
+.example-header-image{
+  background-image: url('../../../assets/img/school.png');
+  background-size: cover;
+}

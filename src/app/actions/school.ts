@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { SchoolName } from '../model/school.model';
+import { SchoolCard } from '../model/school.model';
 
 export const SEARCH_SCHOOL =           '[School] Search';
 export const SEARCH_SCHOOL_COMPLETE =  '[School] Search Complete';
@@ -23,13 +23,13 @@ export class SearchSchoolAction implements Action {
 export class SearchSchoolCompleteAction implements Action {
   readonly type = SEARCH_SCHOOL_COMPLETE;
 
-  constructor(public payload: SchoolName []) { }
+  constructor(public payload: SchoolCard []) { }
 }
 
 export class SearchSchoolFailAction implements Action {
   readonly type = SEARCH_SCHOOL_FAIL;
 
-  constructor(public payload: SchoolName []) { }
+  constructor(public payload: SchoolCard []) { }
 }
 
 /**

@@ -1,13 +1,23 @@
 <div clas="XD-CLASS-SEARCH">
-  <md-toolbar class="xD-CLASS-HEADER">Search</md-toolbar>
-  <div class="XD-CLASS-filter-projects">
-    <college-search-filter [queryParamMap]="queryParams$ | async"
-                           (updateSelectedDegree)="updateSelectedDegree($event)"
-                           (updateSelectedProgram)="updateSelectedProgram($event)"></college-search-filter>
-  </div>
-  <div class="XD-CLASS-SCHOOL">
-    <div>
-      <h1>Hello</h1>
+  <md-toolbar class="xD-CLASS-HEADER">
+    <img width="32px" height="32px" src="../../../assets/img/knowledge.png">
+    <span style="margin-left: 10px">College Score Card</span>
+    <span class="example-spacer"></span>
+    <md-paginator [length]="100"
+                  [pageSize]="20">
+    </md-paginator>
+    <button md-raised-button>Compare List</button>
+  </md-toolbar>
+  <div style="margin-top: 64px;">
+    <div class="XD-CLASS-filter-projects">
+      <college-search-filter [queryParamMap]="queryParams$ | async"
+                             (updateSelectedDegree)="updateSelectedDegree($event)"
+                             (updateSelectedProgram)="updateSelectedProgram($event)"
+                             (updateSchoolSelected)="updateSelectedSchool($event)"></college-search-filter>
+    </div>
+    <div class="XD-CLASS-SCHOOL">
+      <college-school-card-list [schoolCards]="schoolCards$ | async"
+                                [schoolCardsLoading]="schoolCardsLoading$ | async"></college-school-card-list>
     </div>
   </div>
 </div>

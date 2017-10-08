@@ -5,5 +5,6 @@ export const objToSearchParams = (obj:any, searchParms?:URLSearchParams):URLSear
   for (let k in obj) {
     if (obj[k]) params.append(k, obj[k]);
   }
+  params.append(  'api_key', 'WAocNveiBuTTczOj9W7oqLXoVABZyu7Zbaz2cSwn');
   return params;
 };

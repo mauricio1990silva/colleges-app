@@ -15,6 +15,11 @@ export class SearchFilterComponent{
   @Input()queryParamMap: ParamMap;
   @Output() updateSelectedDegree: EventEmitter<string> = new EventEmitter<string>();
   @Output() updateSelectedProgram: EventEmitter<string> = new EventEmitter<string>();
+  @Output() updateSchoolSelected: EventEmitter<string> = new EventEmitter();
+
+  handleClick(event){
+    console.log("selected " + event);
+  }
 
   get selectedDegree(){
     if(this.queryParamMap){
@@ -27,6 +32,14 @@ export class SearchFilterComponent{
   get selectedProgram(){
     if(this.queryParamMap){
       return this.queryParamMap.get('major') || '';
+    }else{
+      return '';
+    }
+  }
+
+  get selectedSchoolName(){
+    if(this.queryParamMap){
+      return this.queryParamMap.get('name') || '';
     }else{
       return '';
     }

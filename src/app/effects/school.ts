@@ -4,16 +4,18 @@ import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/skip';
 import 'rxjs/add/operator/takeUntil';
-import { Injectable } from '@angular/core';
-import { Effect, Actions, toPayload } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
-import { empty } from 'rxjs/observable/empty';
-import { of } from 'rxjs/observable/of';
+import {Injectable} from '@angular/core';
+import {Effect, Actions, toPayload} from '@ngrx/effects';
+import {Action} from '@ngrx/store';
+import {Observable} from 'rxjs/Observable';
+import {empty} from 'rxjs/observable/empty';
+import {of} from 'rxjs/observable/of';
 
-import { GoogleBooksService } from '../services/google-books';
+import {GoogleBooksService} from '../services/google-books';
 import * as school from '../actions/school';
-import { SchoolService } from '../services/school.service';
+import * as search from '../actions/search';
+import {SchoolService} from '../services/school.service';
+import {SchoolCard} from "../model/school.model";
 
 
 /**
@@ -37,12 +39,13 @@ import { SchoolService } from '../services/school.service';
 export class SchoolEffects {
 
   constructor(private actions$: Actions,
-              private schoolService: SchoolService) { }
+              private schoolService: SchoolService) {
+  }
 
   @Effect()
-  searchSchools$: Observable<Action> = this.actions$
+  searchSchoolNames$: Observable<Action> = this.actions$
     .ofType(school.SEARCH_SCHOOL)
-    .debounceTime(300)
+    .debounceTime(200)
     .map(toPayload)
     .switchMap(query => {
       if (query === '') {
@@ -56,4 +59,31 @@ export class SchoolEffects {
         .map(schools => new school.SearchSchoolCompleteAction(schools))
         .catch(() => of(new school.SearchSchoolFailAction([])));
     });
+
+  @Effect()
+  searchSchools$: Observable<Action> = this.actions$
+    .ofType(search.SEARCH)
+    .map(toPayload)
+    .switchMap((queryParams) => {
+      return this.schoolService.searchSchools(queryParams)
+        .map((schools: SchoolCard []) => {
+          console.log("searching ...");
+          return new search.SearchCompleteAction(schools);
+        })
+        .catch(() => of(new search.SearchFailAction([])));
+    });
+  @Effect()
+  searchMoreSchools$: Observable<Action> = this.actions$
+    .ofType(search.SEARCH_MORE)
+    .map(toPayload)
+    .switchMap((queryParams) => {
+      return this.schoolService.searchSchools(queryParams)
+        .map((schools: SchoolCard []) => {
+          return new search.SearchCompleteAction(schools)
+        })
+        .catch(() => of(new search.SearchFailAction([])));
+    });
+
 }
+
+

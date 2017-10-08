@@ -1,36 +1,38 @@
 <div>
   <div class="center">
-    <md-selection-list #schoolSizeList style="margin: 15px;">
-      <div style="border-bottom: 1px darkred solid; width: 100%">Undergraduate Student Body</div>
-      <md-list-option style="text-align: left" *ngFor="let schoolSize of typesOfSchoolSize">
-        {{schoolSize.viewValue}}
-      </md-list-option>
-    </md-selection-list>
+    <div style="width: auto">
+      <md-selection-list #schoolSizeList style="margin: 10px;">
+        <div style="border-bottom: 1px darkred solid; width: 100%">Undergraduate Student Body</div>
+        <md-list-option style="text-align: left" *ngFor="let schoolSize of typesOfSchoolSize">
+          {{schoolSize.viewValue}}
+        </md-list-option>
+      </md-selection-list>
 
-    <md-selection-list #schoolTypeList style="margin: 15px">
-      <div style="border-bottom: 1px darkred solid; width: 100%">Type of School</div>
-      <md-list-option style="text-align: left"  *ngFor="let schoolType of typesOfSchool">
-        {{schoolType.viewValue}}
-      </md-list-option>
-    </md-selection-list>
+      <md-selection-list #schoolTypeList style="margin: 10px">
+        <div style="border-bottom: 1px darkred solid; width: 100%">Type of School</div>
+        <md-list-option style="text-align: left" *ngFor="let schoolType of typesOfSchool">
+          {{schoolType.viewValue}}
+        </md-list-option>
+      </md-selection-list>
+    </div>
 
-    <div>
+    <div style="width: auto">
       <div>Average Annual Cost</div>
-      <div style="margin-left: 50px;">
+      <div>
         $0
         <md-slider md-line style="margin-top: 10px;" max="90" min="0" value="0" [thumb-label]="true"></md-slider>
         $90K
       </div>
       <div>Graduation Rate ( % )</div>
-      <div style="margin-left: 55px;">
+      <div>
         0%
         <md-slider md-line style="margin-top: 10px;" max="100" min="0" value="0" [thumb-label]="true"></md-slider>
         100%
       </div>
       <div>Salary After Attending</div>
-      <div style="margin-left: 65px;">
+      <div>
         $0
-        <md-slider md-line style="margin-top: 10px;" max="125.9" min="0" value="0" [thumb-label]="true"></md-slider>
+        <md-slider md-line style="margin-top: 10px; width: auto" max="125" min="0" value="0" [thumb-label]="true"></md-slider>
         $125.9K
       </div>
     </div>

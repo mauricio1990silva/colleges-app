@@ -43,3 +43,13 @@ export const religions = [
   {value: '80', viewValue: 'Jewish'},
   {value: '30', viewValue: 'Roman Catholic'}
 ];
+
+
+export const defaultQueryParams = {
+  'sort': '2013.earnings.6_yrs_after_entry.percent_greater_than_25000:desc',
+  'school.operating': '1',
+  '2015.student.size__range': '1..',
+  'school.degrees_awarded.predominant__range': '1..3',
+  'school.degrees_awarded.highest__range': '2..4',
+  'fields': 'id,school.name,school.city,school.state,2015.student.size,school.ownership,school.degrees_awarded.predominant,2015.cost.avg_net_price.overall,2015.completion.rate_suppressed.overall,2013.earnings.10_yrs_after_entry.median,2013.earnings.6_yrs_after_entry.percent_greater_than_25000,school.under_investigation',
+};
