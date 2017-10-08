@@ -46,7 +46,8 @@
             <b>Advanced Search</b>
           </md-panel-title>
         </md-expansion-panel-header>
-        <college-advanced-filter></college-advanced-filter>
+        <college-advanced-filter (selectedSchoolSizes)="updateSelectedSchoolSize.emit($event)"
+                                 (selectedSchoolTypes)="updateSelectedSchoolType.emit($event)"></college-advanced-filter>
       </md-expansion-panel>
     </div>
   </div>

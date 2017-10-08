@@ -16,6 +16,8 @@ export class SearchFilterComponent{
   @Output() updateSelectedDegree: EventEmitter<string> = new EventEmitter<string>();
   @Output() updateSelectedProgram: EventEmitter<string> = new EventEmitter<string>();
   @Output() updateSchoolSelected: EventEmitter<string> = new EventEmitter();
+  @Output() updateSelectedSchoolSize: EventEmitter<string> = new EventEmitter();
+  @Output() updateSelectedSchoolType: EventEmitter<string> = new EventEmitter();
 
   handleClick(event){
     console.log("selected " + event);

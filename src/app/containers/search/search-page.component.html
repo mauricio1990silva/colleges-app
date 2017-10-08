@@ -13,7 +13,9 @@
       <college-search-filter [queryParamMap]="queryParams$ | async"
                              (updateSelectedDegree)="updateSelectedDegree($event)"
                              (updateSelectedProgram)="updateSelectedProgram($event)"
-                             (updateSchoolSelected)="updateSelectedSchool($event)"></college-search-filter>
+                             (updateSchoolSelected)="updateSelectedSchool($event)"
+                             (updateSelectedSchoolSize)="updateSelectedSchoolSize($event)"
+                             (updateSelectedSchoolType)="updateSelectedSchoolType($event)"></college-search-filter>
     </div>
     <div class="XD-CLASS-SCHOOL">
       <college-school-card-list [schoolCards]="schoolCards$ | async"

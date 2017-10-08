@@ -69,11 +69,43 @@ export class SearchPageComponent implements OnInit {
   }
 
   public updateSelectedDegree($event) {
-    this.search(this.mergeParams({degree: $event}));
+    if($event === '') {
+      let currentParams = Object.assign({}, this.route.snapshot.queryParams);
+      delete currentParams['degree'];
+      this.search(currentParams);
+    }else{
+      this.search(this.mergeParams({degree: $event}));
+    }
   }
 
   public updateSelectedProgram($event) {
-    this.search(this.mergeParams({major: $event}));
+    if($event === '') {
+      let currentParams = Object.assign({}, this.route.snapshot.queryParams);
+      delete currentParams['major'];
+      this.search(currentParams);
+    }else {
+      this.search(this.mergeParams({major: $event}));
+    }
+  }
+
+  public updateSelectedSchoolSize($event) {
+    if($event.length === 0) {
+      let currentParams = Object.assign({}, this.route.snapshot.queryParams);
+      delete currentParams['size'];
+      this.search(currentParams);
+    }else {
+      this.search(this.mergeParams({size: $event}));
+    }
+  }
+
+  public updateSelectedSchoolType($event) {
+    if($event.length === 0) {
+      let currentParams = Object.assign({}, this.route.snapshot.queryParams);
+      delete currentParams['control'];
+      this.search(currentParams);
+    }else {
+      this.search(this.mergeParams({control: $event}));
+    }
   }
 
   private mergeParams(param: any) {

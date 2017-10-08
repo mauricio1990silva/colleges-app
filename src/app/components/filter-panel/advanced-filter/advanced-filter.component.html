@@ -3,14 +3,19 @@
     <div style="width: auto">
       <md-selection-list #schoolSizeList style="margin: 10px;">
         <div style="border-bottom: 1px darkred solid; width: 100%">Undergraduate Student Body</div>
-        <md-list-option style="text-align: left" *ngFor="let schoolSize of typesOfSchoolSize">
+        <md-list-option style="text-align: left" *ngFor="let schoolSize of typesOfSchoolSize"
+                        [value]="schoolSize.value"
+                        (click)="updateSelectedSchoolSize(schoolSizeList.selectedOptions.selected)">
           {{schoolSize.viewValue}}
         </md-list-option>
       </md-selection-list>
 
+
       <md-selection-list #schoolTypeList style="margin: 10px">
         <div style="border-bottom: 1px darkred solid; width: 100%">Type of School</div>
-        <md-list-option style="text-align: left" *ngFor="let schoolType of typesOfSchool">
+        <md-list-option style="text-align: left" *ngFor="let schoolType of typesOfSchool"
+                        [value]="schoolType.value"
+                        (click)="updateSelectedSchoolType(schoolTypeList.selectedOptions.selected)">
           {{schoolType.viewValue}}
         </md-list-option>
       </md-selection-list>
