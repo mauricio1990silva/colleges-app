@@ -2,14 +2,14 @@ import {
   Component,
   OnInit
 } from '@angular/core';
-import {ActivatedRoute, ParamMap, Params, Router} from "@angular/router";
-import {Observable} from "rxjs/Observable";
-import {Store} from "@ngrx/store";
+import { ActivatedRoute, ParamMap, Params, Router } from '@angular/router';
+import { Observable} from 'rxjs/Observable';
+import { Store} from '@ngrx/store';
 
 import * as fromRoot from '../../reducers';
-import {SchoolCard} from "../../model/school.model";
-import {SearchAction} from "../../actions/search";
-import {defaultQueryParams} from "../../model/filters.model";
+import { SchoolCard } from '../../model/school.model';
+import { SearchAction } from '../../actions/search';
+import { defaultQueryParams } from '../../model/filters.model';
 
 @Component({
   selector: 'college-search',
@@ -135,6 +135,9 @@ export class SearchPageComponent implements OnInit {
 
   private mergeParams(param: any) {
     return Object.assign({}, this.route.snapshot.queryParams, param);
-  };
-}
+  }
+
+  public viewDetails(schoolCard){
+    this.router.navigate(['/school', {id : schoolCard.id}]);
+  }
 }

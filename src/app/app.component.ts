@@ -21,7 +21,7 @@ import { AppState } from './app.service';
   template: `
     <div style="height: 100%;">
       <router-outlet style="height: 100%; top: 0; left: 0; right: 0; bottom: 0"></router-outlet>
-      <!--<my-store-devtools></my-store-devtools>-->
+      <my-store-devtools></my-store-devtools>
     </div>
   `
 })

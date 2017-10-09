@@ -20,7 +20,8 @@
     </div>
     <div class="XD-CLASS-SCHOOL">
       <college-school-card-list [schoolCards]="schoolCards$ | async"
-                                [schoolCardsLoading]="schoolCardsLoading$ | async"></college-school-card-list>
+                                [schoolCardsLoading]="schoolCardsLoading$ | async"
+                                (viewDetails)="viewDetails($event)"></college-school-card-list>
     </div>
   </div>
 </div>

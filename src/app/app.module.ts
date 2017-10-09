@@ -64,6 +64,9 @@ import {SearchFilterComponent} from "./components/filter/search-filter.component
 import {SearchPageComponent} from "./containers/search/search-page.component";
 import {SchoolCardListComponent} from "./components/school-card-list/school-card-list.component";
 import {SchoolCardComponent} from "./components/school-card/school-card.component";
+import {AngularFireModule} from "angularfire2";
+import {environment} from "../environments/environment";
+import {SchoolPageComponent} from "./containers/school/school-page.component";
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -108,6 +111,7 @@ if (ENV === 'development') {
     SearchFilterComponent,
     SchoolCardListComponent,
     SchoolCardComponent,
+    SchoolPageComponent,
     NoContentComponent
   ],
   /**
@@ -122,6 +126,7 @@ if (ENV === 'development') {
     StoreRouterConnectingModule,
     StoreDevToolsModule,
     STORE_DEV_TOOLS_IMPORTS,
+    AngularFireModule.initializeApp(environment.firebase, 'colleges-app'),
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([SchoolEffects]),
     RouterModule.forRoot(ROUTES, {

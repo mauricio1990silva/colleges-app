@@ -1,2 +1,3 @@
 <md-progress-spinner *ngIf="schoolCardsLoading" mode="indeterminate"></md-progress-spinner>
-<college-school-card *ngFor="let schoolCard of schoolCards" [schoolCard]="schoolCard"></college-school-card>
+<college-school-card *ngFor="let schoolCard of schoolCards" [schoolCard]="schoolCard"
+                     (viewDetails)="viewDetails.emit($event)"></college-school-card>

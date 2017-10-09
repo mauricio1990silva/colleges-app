@@ -4,6 +4,7 @@
 .example-card{
   min-width: 400px;
   max-width: 420px;
+  height: auto;
   /*border-top: 10px solid dodgerblue;*/
 }
 .example-header-image{

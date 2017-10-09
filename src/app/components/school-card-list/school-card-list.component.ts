@@ -11,6 +11,7 @@ import { SchoolCard } from '../../model/school.model';
   styleUrls: ['./school-card-list.component.css']
 })
 export class SchoolCardListComponent{
-  @Input()schoolCards: SchoolCard [];
-  @Input()schoolCardsLoading: boolean;
+  @Input() schoolCards: SchoolCard [];
+  @Input() schoolCardsLoading: boolean;
+  @Output() viewDetails: EventEmitter<SchoolCard> = new EventEmitter();
 }
