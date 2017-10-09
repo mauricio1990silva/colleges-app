@@ -1,7 +1,6 @@
 <div>
   <div class="center">
-    <div style="width: auto">
-      <md-selection-list #schoolSizeList style="margin: 10px;">
+      <md-selection-list #schoolSizeList style="margin: 10px; min-width: 250px;">
         <div style="border-bottom: 1px darkred solid; width: 100%">Undergraduate Student Body</div>
         <md-list-option style="text-align: left" *ngFor="let schoolSize of typesOfSchoolSize"
                         [value]="schoolSize.value"
@@ -11,7 +10,7 @@
       </md-selection-list>
 
 
-      <md-selection-list #schoolTypeList style="margin: 10px">
+      <md-selection-list #schoolTypeList style="margin: 10px; min-width: 250px;">
         <div style="border-bottom: 1px darkred solid; width: 100%">Type of School</div>
         <md-list-option style="text-align: left" *ngFor="let schoolType of typesOfSchool"
                         [value]="schoolType.value"
@@ -19,27 +18,24 @@
           {{schoolType.viewValue}}
         </md-list-option>
       </md-selection-list>
-    </div>
 
-    <div style="width: auto">
+
+    <div style="width: 100%">
+      <div style="display: inline-block; width: 100%">
+        <md-slider md-line style="margin-top: 10px; width: 100%" max="90" min="0" value="0" [thumb-label]="true"></md-slider>
+        <div style="100%; margin-top: -15px;"><span style="float: left">$0.0 </span> <span style="float: right">$90K</span></div>
+      </div>
       <div>Average Annual Cost</div>
-      <div>
-        $0
-        <md-slider md-line style="margin-top: 10px;" max="90" min="0" value="0" [thumb-label]="true"></md-slider>
-        $90K
+      <div style="display: inline-block; width: 100%">
+        <md-slider md-line style="margin-top: 10px; width: 100%" max="100" min="0" value="0" [thumb-label]="true"></md-slider>
+        <div style="100%; margin-top: -15px;"><span style="float: left">0% </span> <span style="float: right">100%</span></div>
       </div>
       <div>Graduation Rate ( % )</div>
-      <div>
-        0%
-        <md-slider md-line style="margin-top: 10px;" max="100" min="0" value="0" [thumb-label]="true"></md-slider>
-        100%
+      <div style="display: inline-block; width: 100%">
+        <md-slider md-line style="margin-top: 10px; width: 100%" max="125" min="0" value="0" [thumb-label]="true"></md-slider>
+        <div style="100%; margin-top: -15px;"><span style="float: left">$0.00 </span> <span style="float: right">$125.9K</span></div>
       </div>
       <div>Salary After Attending</div>
-      <div>
-        $0
-        <md-slider md-line style="margin-top: 10px; width: auto" max="125" min="0" value="0" [thumb-label]="true"></md-slider>
-        $125.9K
-      </div>
     </div>
 
     <md-select class="example-full-width" style="margin: 10px;" placeholder="Specialized mission">

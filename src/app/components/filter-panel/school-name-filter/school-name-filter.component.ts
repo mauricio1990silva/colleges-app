@@ -2,7 +2,7 @@
 
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { states } from '../../../model/filters.model';
-import { SchoolName } from '../../../model/school.model';
+import { SchoolCard } from '../../../model/school.model';
 
 @Component({
   selector: 'college-school-name-filter',
@@ -10,7 +10,7 @@ import { SchoolName } from '../../../model/school.model';
   styleUrls: ['./school-name-filter.component.css'],
 })
 export class SchoolNameFilterComponent {
-  @Input() schoolNames: SchoolName [] = [];
+  @Input() schoolNames: SchoolCard [] = [];
   @Input() query: string = '';
   @Input() loading: boolean;
   @Output() search: EventEmitter<string> = new EventEmitter();

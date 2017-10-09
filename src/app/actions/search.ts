@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { SchoolCard } from 'app/model/school.model';
+import { SchoolCard } from '../model/school.model';
 
 export const SEARCH =           '[Search] Search';
 export const SEARCH_MORE =      '[Search] Search More';

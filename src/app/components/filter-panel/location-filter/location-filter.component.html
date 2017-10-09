@@ -1,8 +1,21 @@
-<md-select multiple class="example-full-width" [(ngModel)]="selectedState" placeholder="Choose states">
-  <md-option *ngFor="let state of states" [value]="state.value">
-    {{ state.viewValue }}
-  </md-option>
-</md-select>
+<!--<md-select multiple class="example-full-width" [(ngModel)]="selectedState" placeholder="Choose states">-->
+<!--<md-option *ngFor="let state of states" [value]="state.value">-->
+<!--{{ state.viewValue }}-->
+<!--</md-option>-->
+<!--</md-select>-->
+
+<md-selection-list #stateList style="margin: 10px; min-width: 250px; max-height: 300px; overflow: auto">
+  <div style="border-bottom: 1px darkred solid; width: 100%">Undergraduate Student Body</div>
+  <md-list-option [selected]="selectAll.isSelected" (click)="selectAllAction();updateSelectedStates()">
+    {{selectAll.viewValue}}
+  </md-list-option>
+  <md-list-option [selected]="state.isSelected" style="text-align: left" *ngFor="let state of selectedStatesList"
+                  [value]="state.value"
+                  (click)="updateState(state.value);updateSelectedStates()">
+    {{state.viewValue}}
+  </md-list-option>
+</md-selection-list>
+
 
 <table style="margin-top: 20px;" class="example-full-width" cellspacing="0">
   <tr>

@@ -12,8 +12,9 @@ export const programs = [
 ];
 
 export const states = [
-  {value: 'FL', viewValue: 'Florida'},
-  {value: 'MD', viewValue: 'Maryland'}
+  {value: 'VA', viewValue: 'Wirginia', isSelected: false},
+  {value: 'DC', viewValue: 'Washington DC', isSelected: false},
+  {value: 'MD', viewValue: 'Maryland', isSelected: false}
 ];
 
 export const statesStrings = ['Florida', 'Maryland'];

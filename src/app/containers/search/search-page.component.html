@@ -1,7 +1,7 @@
 <div clas="XD-CLASS-SEARCH">
-  <md-toolbar class="xD-CLASS-HEADER">
-    <img width="32px" height="32px" src="../../../assets/img/knowledge.png">
-    <span style="margin-left: 10px">College Score Card</span>
+  <md-toolbar style="background: #fff;" class="xD-CLASS-HEADER">
+    <img style="margin-left: 10px;" width="32px" height="32px" src="../../../assets/img/knowledge.png">
+    <span style="margin-left: 10px; font-size: x-large">College Score Card</span>
     <span class="example-spacer"></span>
     <md-paginator [length]="100"
                   [pageSize]="20">
@@ -14,6 +14,7 @@
                              (updateSelectedDegree)="updateSelectedDegree($event)"
                              (updateSelectedProgram)="updateSelectedProgram($event)"
                              (updateSchoolSelected)="updateSelectedSchool($event)"
+                             (updateSelectedStates)="updateSelectedStates($event)"
                              (updateSelectedSchoolSize)="updateSelectedSchoolSize($event)"
                              (updateSelectedSchoolType)="updateSelectedSchoolType($event)"></college-search-filter>
     </div>

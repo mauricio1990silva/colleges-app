@@ -2,6 +2,7 @@ import {
   Component,
   OnInit
 } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   /**
@@ -14,16 +15,13 @@ import {
   templateUrl: './home-page.component.html'
 })
 export class HomePageComponent implements OnInit {
-  /**
-   * Set our default values
-   */
-  public localState = { value: '' };
 
+  constructor(private router: Router) {}
 
   public ngOnInit() {
-    console.log('hello `Home` component');
-    /**
-     * this.title.getData().subscribe(data => this.data = data);
-     */
+  }
+
+  public search(queryParams){
+    this.router.navigate(['/search'], { queryParams: queryParams });
   }
 }

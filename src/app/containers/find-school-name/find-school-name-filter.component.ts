@@ -5,7 +5,7 @@ import { states } from '../../../model/filters.model';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../reducers';
 import { Observable } from 'rxjs/Observable';
-import { SchoolName } from '../../model/school.model';
+import { SchoolCard } from '../../model/school.model';
 import * as school from '../../actions/school';
 import 'rxjs/add/operator/take';
 
@@ -16,15 +16,12 @@ import 'rxjs/add/operator/take';
   styleUrls: ['./find-school-name-filter.component.css'],
 })
 export class FindSchoolNameFilterComponent {
-
-  searchQuery$: Observable<string>;
-  schoolNames$: Observable<SchoolName[]>;
+  schoolNames$: Observable<SchoolCard[]>;
   loading$: Observable<boolean>;
   @Input() selectedSchoolName: string;
   @Output() schoolSelected: EventEmitter<string> = new EventEmitter();
 
   constructor(private store: Store<fromRoot.State>) {
-    this.searchQuery$ = store.select(fromRoot.getSchoolSearchQuery).take(1);
     this.schoolNames$ = store.select(fromRoot.getSchoolNames);
     this.loading$ = store.select(fromRoot.getSchoolLoading);
   }
@@ -35,7 +32,6 @@ export class FindSchoolNameFilterComponent {
       'per_page': 20,
       'school.name' : query
     };
-    console.log("query " + query);
     this.store.dispatch(new school.SearchSchoolAction(q));
   }
 }

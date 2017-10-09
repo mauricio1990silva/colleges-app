@@ -40,12 +40,22 @@ export class SearchPageComponent implements OnInit {
   }
 
   private parseParams(params: ParamMap) {
+    //degree
     let degree = params.has('degree') ? this.parseDegree(params.get('degree')) : {};
-    let majorKey = {}; majorKey[`2015.academics.program.degree.${params.get('major')}__range`] = '1..';
+    //major
+    let majorKey = {};
+    majorKey[`2015.academics.program.degree.${params.get('major')}__range`] = '1..';
     let major = params.has('major') ? majorKey : {};
-    let schoolNameKey = {}; schoolNameKey['school.name'] = params.get('name');
+    //school name
+    let schoolNameKey = {};
+    schoolNameKey['school.name'] = params.get('name');
     let schoolName = params.has('name') ? schoolNameKey : {};
-    let q = Object.assign({}, defaultQueryParams, degree, major, schoolName);
+    //school States
+    let schoolStateKey = {};
+    schoolStateKey['school.state'] = params.getAll('state');
+    let schoolStates = params.has('state') ? schoolStateKey : {};
+    let q = Object.assign({}, defaultQueryParams, degree, major,
+      schoolName, schoolStates);
     return q;
   }
 
@@ -65,45 +75,60 @@ export class SearchPageComponent implements OnInit {
   }
 
   public updateSelectedSchool($event) {
-    this.search(this.mergeParams({name: $event}));
+    if ($event === '') {
+      let currentParams = Object.assign({}, this.route.snapshot.queryParams);
+      delete currentParams['name'];
+      this.search(currentParams);
+    } else {
+      this.search(this.mergeParams({name: $event}));
+    }
+  }
+
+  public updateSelectedStates($event) {
+    let currentParams = Object.assign({}, this.route.snapshot.queryParams);
+    delete currentParams['state'];
+    if ($event.length > 0) {
+      currentParams['state'] = $event;
+    }
+    this.search(currentParams);
   }
 
   public updateSelectedDegree($event) {
-    if($event === '') {
+    if ($event === '') {
       let currentParams = Object.assign({}, this.route.snapshot.queryParams);
       delete currentParams['degree'];
       this.search(currentParams);
-    }else{
+    } else {
       this.search(this.mergeParams({degree: $event}));
     }
   }
 
   public updateSelectedProgram($event) {
-    if($event === '') {
+    if ($event === '') {
       let currentParams = Object.assign({}, this.route.snapshot.queryParams);
       delete currentParams['major'];
       this.search(currentParams);
-    }else {
+    } else {
       this.search(this.mergeParams({major: $event}));
     }
   }
 
   public updateSelectedSchoolSize($event) {
-    if($event.length === 0) {
+    if ($event.length === 0) {
       let currentParams = Object.assign({}, this.route.snapshot.queryParams);
       delete currentParams['size'];
       this.search(currentParams);
-    }else {
+    } else {
       this.search(this.mergeParams({size: $event}));
     }
   }
 
   public updateSelectedSchoolType($event) {
-    if($event.length === 0) {
+    if ($event.length === 0) {
       let currentParams = Object.assign({}, this.route.snapshot.queryParams);
       delete currentParams['control'];
       this.search(currentParams);
-    }else {
+    } else {
       this.search(this.mergeParams({control: $event}));
     }
   }

@@ -67,7 +67,6 @@ export class SchoolEffects {
     .switchMap((queryParams) => {
       return this.schoolService.searchSchools(queryParams)
         .map((schools: SchoolCard []) => {
-          console.log("searching ...");
           return new search.SearchCompleteAction(schools);
         })
         .catch(() => of(new search.SearchFailAction([])));
